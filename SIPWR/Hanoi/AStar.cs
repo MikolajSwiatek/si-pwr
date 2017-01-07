@@ -1,24 +1,16 @@
 ﻿using SIPWR.Hanoi.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace SIPWR.Hanoi
 {
-    public class AStar : IAlgorithm
+    public class AStar : Algorithm
     {
-        private List<Tower> towers;
-        private HanoiState hanoiState;
-        private List<string> result;
-        private int counter;
-
         public AStar(int t, int d)
-        {
-            towers = HanoiHelper.Create(t, d);
-        }
+            : base(t, d)
+        { }
 
-        public void Execute(string endstate)
+        public override void Execute(string endstate)
         {
             var closetSet = new Dictionary<string, HanoiState>();
             var openSet = new Dictionary<string, HanoiState>();
@@ -115,11 +107,6 @@ namespace SIPWR.Hanoi
             }
 
             return totalPath;
-        }
-
-        public History GetResult()
-        {
-            return new History(result, counter);
         }
     }
 }

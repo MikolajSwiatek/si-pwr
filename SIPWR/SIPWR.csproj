@@ -115,13 +115,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hanoi\Algorithm.cs" />
     <Compile Include="Hanoi\AStar.cs" />
     <Compile Include="Hanoi\BFS.cs" />
     <Compile Include="Hanoi\DFS.cs" />
     <Compile Include="Hanoi\HanoiAlgorithm.cs" />
     <Compile Include="Hanoi\HanoiFactory.cs" />
     <Compile Include="Hanoi\HanoiHelper.cs" />
-    <Compile Include="Hanoi\IAlgorithm.cs" />
     <Compile Include="Hanoi\Model\HanoiState.cs" />
     <Compile Include="Hanoi\Model\HanoiTowers.cs" />
     <Compile Include="Hanoi\Model\History.cs" />

@@ -1,35 +1,20 @@
 ﻿using SIPWR.Hanoi.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace SIPWR.Hanoi
 {
-    public class BFS : IAlgorithm
+    public class BFS : Algorithm
     {
-        private List<Tower> towers;
-        private HanoiState hanoiState;
-        private List<string> result;
-        private int counter;
-        private IDictionary<string, int> distance;
-        private IDictionary<string, string> parents;
-
         public BFS(int t, int d)
-        {
-            towers = HanoiHelper.Create(t, d);
-        }
+            : base(t, d)
+        { }
 
-        public void Execute(string endstate)
+        public override void Execute(string endstate)
         {
             var q = new Stack<HanoiState>();
-            hanoiState = new HanoiState(this.towers);
-            distance = new Dictionary<string, int>();
-            parents = new Dictionary<string, string>();
-            result = new List<string>();
 
-            distance[hanoiState.Id] = 0;
-            parents[hanoiState.Id] = string.Empty;
+            SetDataForFS();
             q.Push(hanoiState);
 
             while (q.Count > 0)
@@ -60,27 +45,7 @@ namespace SIPWR.Hanoi
             }
         }
 
-        private void GenerateResult(string endstate)
-        {
-            result.Add(endstate);
-            var position = endstate;
-
-            while (true)
-            {
-                if (parents[position] != string.Empty)
-                {
-                    result.Add(parents[position]);
-                }
-                else
-                {
-                    return;
-                }
-
-                position = parents[position];
-            }
-        }
-
-        public Model.History GetResult()
+        public override Model.History GetResult()
         {
             result = result.Select((c, index) => new { c, index })
                                          .OrderByDescending(x => x.index)

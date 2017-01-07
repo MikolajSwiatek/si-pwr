@@ -1,27 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SIPWR.Hanoi
 {
     public static class HanoiFactory
     {
-        /*
-        public static IAlgorithm Get(HanoiAlgorithm algorithm, int t, int d)
+
+        public static Algorithm Get(
+            HanoiAlgorithm algorithm,
+            int t,
+            int d)
         {
             switch (algorithm)
             {
                 case HanoiAlgorithm.AStar:
-                    new AStar(t, d);
+                    return new AStar(t, d);
                 case HanoiAlgorithm.BFS:
-                    throw new NotImplementedException();
+                    return new BFS(t, d);
                 case HanoiAlgorithm.DFS:
-                    throw new NotImplementedException();
+                    return new DFS(t, d);
                 default:
                     throw new NotImplementedException();
             }
         }
-        */
     }
 }
