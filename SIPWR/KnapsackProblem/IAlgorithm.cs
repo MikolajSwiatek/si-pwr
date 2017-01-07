@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIPWR.Hanoi
+namespace SIPWR.KnapsackProblem
 {
     interface IAlgorithm
     {
-        void Execute(string endstate);
-        Hanoi.Model.History GetResult();
+        void Execute();
+        void GetResult();
     }
 }

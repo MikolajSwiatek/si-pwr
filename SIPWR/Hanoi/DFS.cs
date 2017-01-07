@@ -8,5 +8,14 @@ namespace SIPWR.Hanoi
 {
     public class DFS : IAlgorithm
     {
+        public void Execute(string endstate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Model.History GetResult()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

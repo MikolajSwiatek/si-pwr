@@ -7,12 +7,13 @@ namespace SIPWR.Hanoi
 {
     public static class HanoiFactory
     {
-        public IAlgorithm Get(HanoiAlgorithm algorithm)
+        /*
+        public static IAlgorithm Get(HanoiAlgorithm algorithm, int t, int d)
         {
             switch (algorithm)
             {
                 case HanoiAlgorithm.AStar:
-                    throw new NotImplementedException();
+                    new AStar(t, d);
                 case HanoiAlgorithm.BFS:
                     throw new NotImplementedException();
                 case HanoiAlgorithm.DFS:
@@ -21,5 +22,6 @@ namespace SIPWR.Hanoi
                     throw new NotImplementedException();
             }
         }
+        */
     }
 }

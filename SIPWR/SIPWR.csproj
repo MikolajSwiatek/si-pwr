@@ -115,6 +115,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hanoi\AStar.cs" />
+    <Compile Include="Hanoi\BFS.cs" />
+    <Compile Include="Hanoi\DFS.cs" />
+    <Compile Include="Hanoi\HanoiAlgorithm.cs" />
+    <Compile Include="Hanoi\HanoiFactory.cs" />
+    <Compile Include="Hanoi\HanoiHelper.cs" />
+    <Compile Include="Hanoi\IAlgorithm.cs" />
+    <Compile Include="Hanoi\Model\HanoiState.cs" />
+    <Compile Include="Hanoi\Model\HanoiTowers.cs" />
+    <Compile Include="Hanoi\Model\History.cs" />
+    <Compile Include="Hanoi\Model\Tower.cs" />
+    <Compile Include="KnapsackProblem\Genetic.cs" />
+    <Compile Include="KnapsackProblem\Heuristic.cs" />
+    <Compile Include="KnapsackProblem\IAlgorithm.cs" />
+    <Compile Include="KnapsackProblem\Item.cs" />
+    <Compile Include="KnapsackProblem\Bag.cs" />
+    <Compile Include="KnapsackProblem\KnapsackAlgorithm.cs" />
+    <Compile Include="KnapsackProblem\KnapsackFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

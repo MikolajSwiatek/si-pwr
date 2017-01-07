@@ -7,10 +7,10 @@ namespace SIPWR.Hanoi
 {
     public static class HanoiHelper
     {
-        public static List<Hanoi.Model.Tower> Create(int tower, int dics)
+        public static List<Hanoi.Model.Tower> Create(int tower, int disc)
         {
             var towers = CreateTowers(tower);
-            AddDics(towers, dics);
+            AddDics(towers, disc);
 
             return towers;
         }
@@ -39,13 +39,11 @@ namespace SIPWR.Hanoi
             return result;
         }
 
-        public static void AddDics(List<Hanoi.Model.Tower> towers, int dics)
+        public static void AddDics(List<Hanoi.Model.Tower> towers, int disc)
         {
-            var tower = towers.First();
-
-            for (var d = 0; d < dics; d++)
+            for (var d = disc - 1; d != 0; d--)
             {
-                tower.Discs.Add(d);
+                towers.First().Discs.Add(d);
             }
         }
     }
