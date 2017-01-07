@@ -87,7 +87,7 @@ namespace SIPWR.Hanoi
                 var value = fscore[os.Key];
                 if (value < minValue)
                 {
-                    value = fscore[os.Key];
+                    //value = fscore[os.Key];
                     openSetKey = os.Key;
                 }
             }

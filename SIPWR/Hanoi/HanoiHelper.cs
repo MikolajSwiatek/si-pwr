@@ -39,7 +39,7 @@ namespace SIPWR.Hanoi
 
         public static void AddDics(List<Hanoi.Model.Tower> towers, int disc)
         {
-            for (var d = disc; d != -1; d--)
+            for (var d = disc; d != 0; d--)
             {
                 towers.First().Discs.Add(d);
             }
