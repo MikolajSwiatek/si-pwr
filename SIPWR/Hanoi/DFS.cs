@@ -1,5 +1,6 @@
 ﻿using SIPWR.Hanoi.Model;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SIPWR.Hanoi
 {
@@ -11,16 +12,18 @@ namespace SIPWR.Hanoi
 
         public override void Execute(string endstate)
         {
-            var q = new Stack<HanoiState>();
+            var q = new List<HanoiState>();
 
             SetDataForFS();
-            q.Push(hanoiState);
+            q.Add(hanoiState);
 
             string neighborId = string.Empty;
 
-            while (endstate == neighborId)
+            while (endstate != neighborId)
             {
-                var current = q.Pop();
+                var current = q.First();
+                q.Remove(current);
+
                 var currentId = current.Id;
 
                 var neighbors = current.GetNeighbor();
@@ -33,7 +36,7 @@ namespace SIPWR.Hanoi
                     {
                         distance[neighborId] = distance[currentId] + 1;
                         parents[neighborId] = currentId;
-                        q.Push(neighbor);
+                        q.Add(neighbor);
                         counter++;
                     }
                 }

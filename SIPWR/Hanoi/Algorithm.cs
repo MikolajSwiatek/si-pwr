@@ -23,8 +23,13 @@ namespace SIPWR.Hanoi
 
         public abstract void Execute(string endstate);
 
-        public virtual History GetResult()
+        public virtual Model.History GetResult()
         {
+            result = result.Select((c, index) => new { c, index })
+                                         .OrderByDescending(x => x.index)
+                                         .Select(x => x.c)
+                                         .ToList();
+
             return new History(result, counter);
         }
 
@@ -48,14 +53,13 @@ namespace SIPWR.Hanoi
             {
                 if (parents[position] != string.Empty)
                 {
-                    result.Add(parents[position]);
+                    position = parents[position];
+                    result.Add(position);
                 }
                 else
                 {
                     return;
                 }
-
-                position = parents[position];
             }
         }
     }

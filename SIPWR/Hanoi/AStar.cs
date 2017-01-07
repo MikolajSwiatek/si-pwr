@@ -87,7 +87,7 @@ namespace SIPWR.Hanoi
                 var value = fscore[os.Key];
                 if (value < minValue)
                 {
-                    //value = fscore[os.Key];
+                    minValue = value;
                     openSetKey = os.Key;
                 }
             }
@@ -100,13 +100,22 @@ namespace SIPWR.Hanoi
             Dictionary<string, string> cameFrom)
         {
             var totalPath = new List<string>();
+            totalPath.Add(current);
 
-            foreach (var cf in cameFrom)
+            var node = current;
+
+            while (true)
             {
-                totalPath.Add(cf.Key);
+                if (cameFrom.ContainsKey(node))
+                {
+                    node = cameFrom[node];
+                    totalPath.Add(node);
+                }
+                else
+                {
+                    return totalPath;
+                }
             }
-
-            return totalPath;
         }
     }
 }

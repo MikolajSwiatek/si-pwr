@@ -44,5 +44,36 @@ namespace SIPWR.Hanoi
                 towers.First().Discs.Add(d);
             }
         }
+
+        public static string ResultGenerator(int t, int d, int selectTower)
+        {
+            var result = string.Empty;
+
+            for (var i = 0; i < t; i++)
+            {
+                result += "[";
+
+                for (var j = d; j != 0; j--)
+                {
+                    if (j != d)
+                    {
+                        result += ";";
+                    }
+
+                    if (i + 1 != selectTower)
+                    {
+                        result += "0";
+                    }
+                    else
+                    {
+                        result += j.ToString();
+                    }
+                }
+
+                result += "]";
+            }
+
+            return result;
+        }
     }
 }
