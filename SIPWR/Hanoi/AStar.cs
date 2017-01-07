@@ -60,21 +60,25 @@ namespace SIPWR.Hanoi
                     }
 
                     var tentativeGScore = gScore[current] + 1;
-
+                    var tentativeIsBetter = false;
                     if (!openSet.ContainsKey(neighborId))
                     {
                         openSet[neighborId] = neighbor;
                         idToState[neighborId] = neighbor;
                         counter++;
+                        tentativeIsBetter = true;
                     }
-                    else if (tentativeGScore >= gScore[neighborId])
+                    else if (tentativeGScore < gScore[neighborId])
                     {
-                        continue;
+                        tentativeIsBetter = true;
                     }
 
-                    cameFrom[current] = neighborId;
-                    gScore[neighborId] = tentativeGScore;
-                    fScore[neighborId] = tentativeGScore;
+                    if (tentativeIsBetter)
+                    {
+                        cameFrom[neighborId] = current;
+                        gScore[neighborId] = tentativeGScore;
+                        fScore[neighborId] = tentativeGScore;
+                    }
                 }
             }
         }
@@ -107,7 +111,7 @@ namespace SIPWR.Hanoi
 
             foreach (var cf in cameFrom)
             {
-                totalPath.Add(cf.Value);
+                totalPath.Add(cf.Key);
             }
 
             return totalPath;
