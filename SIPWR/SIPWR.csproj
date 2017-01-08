@@ -126,14 +126,17 @@
     <Compile Include="Hanoi\Model\HanoiTowers.cs" />
     <Compile Include="Hanoi\Model\History.cs" />
     <Compile Include="Hanoi\Model\Tower.cs" />
-    <Compile Include="KnapsackProblem\Genetic.cs" />
-    <Compile Include="KnapsackProblem\Heuristic.cs" />
-    <Compile Include="KnapsackProblem\IAlgorithm.cs" />
-    <Compile Include="KnapsackProblem\Item.cs" />
-    <Compile Include="KnapsackProblem\Bag.cs" />
-    <Compile Include="KnapsackProblem\KnapsackAlgorithm.cs" />
-    <Compile Include="KnapsackProblem\KnapsackFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TSP\Distance.cs" />
+    <Compile Include="TSP\GeneticAlgorithm.cs" />
+    <Compile Include="TSP\IAlgorithm.cs" />
+    <Compile Include="TSP\Model\City.cs" />
+    <Compile Include="TSP\Model\History.cs" />
+    <Compile Include="TSP\RandomHelper.cs" />
+    <Compile Include="TSP\SimulatedAnnealing.cs" />
+    <Compile Include="TSP\Tour.cs" />
+    <Compile Include="TSP\TourManager.cs" />
+    <Compile Include="TSP\TSPCreatorHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
