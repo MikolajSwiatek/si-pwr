@@ -16,6 +16,9 @@ namespace SIPWR.Hanoi
         protected IDictionary<string, int> distance;
         protected IDictionary<string, string> parents;
 
+        protected DateTime startTime;
+        protected DateTime endTime;
+
         public Algorithm(int t, int d)
         {
             towers = HanoiHelper.Create(t, d);
@@ -30,7 +33,7 @@ namespace SIPWR.Hanoi
                                          .Select(x => x.c)
                                          .ToList();
 
-            return new History(result, counter);
+            return new History(result, counter, startTime, endTime);
         }
 
         protected void SetDataForFS()

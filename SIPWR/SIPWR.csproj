@@ -127,12 +127,14 @@
     <Compile Include="Hanoi\Model\History.cs" />
     <Compile Include="Hanoi\Model\Tower.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TSP\CrossingType.cs" />
     <Compile Include="TSP\Distance.cs" />
     <Compile Include="TSP\GeneticAlgorithm.cs" />
     <Compile Include="TSP\IAlgorithm.cs" />
     <Compile Include="TSP\Model\City.cs" />
     <Compile Include="TSP\Model\History.cs" />
     <Compile Include="TSP\RandomHelper.cs" />
+    <Compile Include="TSP\SelectionType.cs" />
     <Compile Include="TSP\SimulatedAnnealing.cs" />
     <Compile Include="TSP\Tour.cs" />
     <Compile Include="TSP\TourManager.cs" />

@@ -22,6 +22,9 @@ namespace SIPWR.TSP
         private CrossingType crossingType;
         private SelectionType selectionType;
 
+        private DateTime startTime;
+        private DateTime endTime;
+
         public GeneticAlgorithm(
             int populationSize,
             double mutationProbability,
@@ -50,7 +53,10 @@ namespace SIPWR.TSP
 
         public History GetResult()
         {
-            return new History(Tour.TourCities, Tour.Distance);
+            return new History(Tour.TourCities,
+                Tour.Distance,
+                startTime,
+                endTime);
         }
 
         public void Initialization()

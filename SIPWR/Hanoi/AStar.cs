@@ -12,6 +12,8 @@ namespace SIPWR.Hanoi
 
         public override void Execute(string endstate)
         {
+            startTime = DateTime.Now;
+
             var closetSet = new Dictionary<string, HanoiState>();
             var openSet = new Dictionary<string, HanoiState>();
             var fScore = new Dictionary<string, int>();
@@ -73,6 +75,8 @@ namespace SIPWR.Hanoi
                     }
                 }
             }
+
+            endTime = DateTime.Now;
         }
 
         private string GetLeastCost(

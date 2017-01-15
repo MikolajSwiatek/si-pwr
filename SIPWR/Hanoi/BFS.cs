@@ -12,6 +12,8 @@ namespace SIPWR.Hanoi
 
         public override void Execute(string endstate)
         {
+            startTime = DateTime.Now;
+
             var q = new List<HanoiState>();
 
             SetDataForFS();
@@ -40,6 +42,8 @@ namespace SIPWR.Hanoi
             }
 
             GenerateResult(endstate);
+
+            endTime = DateTime.Now;
         }
     }
 }

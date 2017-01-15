@@ -11,6 +11,8 @@ namespace SIPWR.TSP
         private double coolingRate;
         private Dictionary<string, Dictionary<string, double>> distances;
         private Tour best;
+        private DateTime startTime;
+        private DateTime endTime;
 
         public SimulatedAnnealing(
             double temp,
@@ -39,6 +41,7 @@ namespace SIPWR.TSP
 
         public void Execute()
         {
+            startTime = DateTime.Now;
             var currentSolution = new Tour();
             best = new Tour(currentSolution.TourCities);
             var random = new Random();
@@ -74,6 +77,8 @@ namespace SIPWR.TSP
 
                 temp *= 1 - coolingRate;
             }
+
+            endTime = DateTime.Now;
         }
 
         private static double AcceptanceProbability(
@@ -91,7 +96,11 @@ namespace SIPWR.TSP
 
         public History GetResult()
         {
-            return new History(best.TourCities, best.GetDistance(distances));
+            return new History(
+                best.TourCities,
+                best.GetDistance(distances),
+                startTime,
+                endTime);
         }
     }
 }
