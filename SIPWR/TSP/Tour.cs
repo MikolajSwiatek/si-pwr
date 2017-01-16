@@ -79,5 +79,20 @@ namespace SIPWR.TSP
 
             return this.Distance;
         }
+
+        public double Fitness
+        {
+            get
+            {
+                if (this.Distance == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1 / this.Distance;
+                }
+            }
+        }
     }
 }

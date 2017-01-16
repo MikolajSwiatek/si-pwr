@@ -43,6 +43,8 @@ namespace SIPWR.TSP
         {
             startTime = DateTime.Now;
             var currentSolution = new Tour();
+            currentSolution.GenerateIndividual();
+
             best = new Tour(currentSolution.TourCities);
             var random = new Random();
 
