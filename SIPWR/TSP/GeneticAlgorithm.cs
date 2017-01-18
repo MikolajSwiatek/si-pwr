@@ -1,5 +1,6 @@
 ﻿using SIPWR.TSP.Crossover;
 using SIPWR.TSP.Model;
+using SIPWR.TSP.Mutator;
 using SIPWR.TSP.Selection;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace SIPWR.TSP
         public double mutationProbability { get; set; }
         public double recombinationProbability { get; set; }
         public int termination { get; set; }
-        public int mutator { get; set; }
+        public int mutatorValue { get; set; }
 
         public Tour best { get; set; }
 
@@ -24,6 +25,7 @@ namespace SIPWR.TSP
 
         private ICrossover crossover;
         private ISelection selection;
+        private IMutator mutator;
 
         private DateTime startTime;
         private DateTime endTime;
@@ -35,15 +37,16 @@ namespace SIPWR.TSP
             double mutationProbability,
             double recombinationProbability,
             int termination,
-            int mutator,
+            int mutatorValue,
             int generationCount,
             int populationSize,
             CrossoverType crossoverType,
             SelectionType selectionType,
+            MutatorType mutatortype,
             List<City> cities)
         {
             this.distances = Distance.Calculate(TourManager.Cities);
-            this.mutationProbability = 1.0 / (TourManager.Cities.Count * mutator);
+            this.mutationProbability = 1.0 / (TourManager.Cities.Count * mutatorValue);
             this.recombinationProbability = recombinationProbability;
             this.termination = termination;
             this.generationCount = generationCount;
@@ -51,6 +54,8 @@ namespace SIPWR.TSP
 
             this.crossover = CrossoverFactory.Get(crossoverType);
             this.selection = SelectionFactory.Get(selectionType);
+            this.mutator = MutatorFactory.Get(mutatortype);
+
             TourManager.Cities = cities;
         }
 
@@ -60,9 +65,7 @@ namespace SIPWR.TSP
 
             for (var i = 0; i < populationSize; i++)
             {
-                var tour = new Tour();
-                tour.GenerateIndividual();
-                populations.Add(tour);
+                var tour = Tour.GetRandomTour();
             }
 
             endTime = DateTime.Now;
@@ -74,6 +77,9 @@ namespace SIPWR.TSP
 
             for (var i = 0; i < populationSize; i += 2)
             {
+                var selection1 = selection.Selection(populations, distances);
+                var selection2 = selection.Selection(populations, distances);
+                var aux = crossover.Crossover(selection1, selection2);
             }
         }
 
