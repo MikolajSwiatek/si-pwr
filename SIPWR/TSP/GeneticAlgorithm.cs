@@ -12,11 +12,7 @@ namespace SIPWR.TSP
     public class GeneticAlgorithm : IAlgorithm
     {
         public double mutationProbability { get; set; }
-        public double recombinationProbability { get; set; }
-        public int termination { get; set; }
         public int mutatorValue { get; set; }
-
-        public Tour best { get; set; }
 
         private Dictionary<string, Dictionary<string, double>> distances;
 
@@ -31,30 +27,24 @@ namespace SIPWR.TSP
         private DateTime endTime;
 
         private Dictionary<City, double> FitnessCity;
-        private List<Tour> populations;
+        private List<Tour> populations = new List<Tour>();
+        private Tour best = null;
 
         public GeneticAlgorithm(
-            double mutationProbability,
-            double recombinationProbability,
-            int termination,
             int mutatorValue,
             int generationCount,
             int populationSize,
             CrossoverType crossoverType,
             SelectionType selectionType,
-            MutatorType mutatortype,
             List<City> cities)
         {
             this.distances = Distance.Calculate(TourManager.Cities);
             this.mutationProbability = 1.0 / (TourManager.Cities.Count * mutatorValue);
-            this.recombinationProbability = recombinationProbability;
-            this.termination = termination;
             this.generationCount = generationCount;
             this.populationSize = populationSize;
 
             this.crossover = CrossoverFactory.Get(crossoverType);
             this.selection = SelectionFactory.Get(selectionType);
-            this.mutator = MutatorFactory.Get(mutatortype);
 
             TourManager.Cities = cities;
         }
@@ -63,12 +53,21 @@ namespace SIPWR.TSP
         {
             startTime = DateTime.Now;
 
-            for (var i = 0; i < populationSize; i++)
+            for (var i = 0; i < generationCount; i++)
             {
-                var tour = Tour.GetRandomTour();
+                NextGeneration();
             }
 
             endTime = DateTime.Now;
+        }
+
+        private void GeneratePopulations()
+        {
+            for (var i = 0; i < populationSize; i++)
+            {
+                var tour = Tour.GetRandomTour();
+                populations.Add(tour);
+            }
         }
 
         private void NextGeneration()
@@ -80,6 +79,52 @@ namespace SIPWR.TSP
                 var selection1 = selection.Selection(populations, distances);
                 var selection2 = selection.Selection(populations, distances);
                 var aux = crossover.Crossover(selection1, selection2);
+
+                Mutation(aux);
+
+                aux.GetDistance(distances);
+                newGeneration.Add(aux);
+            }
+
+            SetBest(newGeneration);
+        }
+
+        private void Mutation(Tour aux)
+        {
+            for (var index = 0; index < aux.TourCities.Count(); index++)
+            {
+                if (RandomHelper.Random.NextDouble() < mutationProbability)
+                {
+                    var city1 = aux.TourCities[index];
+                    City city2 = null;
+
+                    if (index + 1 < aux.TourCities.Count())
+                    {
+                        city2 = aux.TourCities[index + 1];
+                    }
+                    else
+                    {
+                        city2 = aux.TourCities[0];
+                    }
+
+                    aux.TourCities[index] = city2;
+                    aux.TourCities[index + 1] = city1;
+                }
+            }
+        }
+
+        private void SetBest(List<Tour> newGeneration)
+        {
+            var fitness = 0d;
+
+            foreach (var ng in newGeneration)
+            {
+                ng.GetDistance(distances);
+
+                if (fitness < ng.Fitness)
+                {
+                    best = ng;
+                }
             }
         }
 
@@ -89,26 +134,6 @@ namespace SIPWR.TSP
                 best.GetDistance(distances),
                 startTime,
                 endTime);
-        }
-
-        private Tour Selection(Tour currentPopulation, Tour newPopulation)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void Crossover()
-        {
-
-        }
-
-        private void Mutate()
-        {
-
-        }
-
-        private void Evaluate()
-        {
-
         }
     }
 }
