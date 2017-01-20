@@ -2,7 +2,7 @@
 
 namespace SIPWR.TSP.Crossover
 {
-    interface ICrossover
+    public interface ICrossover
     {
         Tour Crossover(Tour tour1, Tour tour2);
     }

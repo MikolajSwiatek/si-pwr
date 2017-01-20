@@ -2,7 +2,7 @@
 
 namespace SIPWR.TSP.Selection
 {
-    interface ISelection
+    public interface ISelection
     {
         Tour Selection(
             List<Tour> populations,

@@ -9,11 +9,11 @@ namespace SIPWR.TSP.Crossover
             switch (type)
             {
                 case CrossoverType.Point:
-                    return new Point();
+                    return (ICrossover)new Point();
                 case CrossoverType.TwoPoint:
-                    return new TwoPoint();;
+                    return (ICrossover)new TwoPoint();
                 case CrossoverType.Uniform:
-                    return new Uniform();
+                    return (ICrossover)new Uniform();
                 default:
                     throw new NotImplementedException();
             }

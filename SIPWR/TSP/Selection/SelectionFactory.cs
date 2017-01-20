@@ -9,9 +9,9 @@ namespace SIPWR.TSP.Selection
             switch (type)
             {
                 case SelectionType.Roulette:
-                    return new Roulette();
+                    return new Roulette() as ISelection;
                 case SelectionType.Tournament:
-                    return new Tournament();
+                    return new Tournament() as ISelection;
                 default:
                     throw new NotImplementedException();
             }

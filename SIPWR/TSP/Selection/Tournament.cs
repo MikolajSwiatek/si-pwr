@@ -4,6 +4,11 @@ namespace SIPWR.TSP.Selection
 {
     public class Tournament : ISelection
     {
+        public Tournament()
+        {
+
+        }
+
         public Tour Selection(
             List<Tour> populations,
             Dictionary<string, Dictionary<string, double>> distances)

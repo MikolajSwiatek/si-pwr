@@ -1,13 +1,15 @@
 ﻿using SIPWR.TSP.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace SIPWR.TSP.Crossover
 {
     public class Point : ICrossover
     {
+        public Point()
+        {
+
+        }
 
         public Tour Crossover(Tour tour1, Tour tour2)
         {
@@ -16,14 +18,19 @@ namespace SIPWR.TSP.Crossover
 
             while (index < tour1.TourCities.Count)
             {
-                if (index < parentA.resultVector.length / 2)
-                    newVector[index] = parentA.resultVector[index];
+                if (index < tour1.TourCities.Count / 2)
+                {
+                    cities.Add(tour1.TourCities.ElementAt(index));
+                }
                 else
-                    newVector[index] = parentB.resultVector[index];
+                {
+                    cities.Add(tour2.TourCities.ElementAt(index));
+                }
 
                 index++;
             }
-            return new Result(newVector, 0, 0);
+
+            return new Tour(cities);
         }
     }
 }

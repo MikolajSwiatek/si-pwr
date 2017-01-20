@@ -14,7 +14,6 @@ namespace SIPWR.TSP
         public Tour()
         {
             this.TourCities = new List<City>();
-            GenerateIndividual();
 
             this.Distance = 0;
         }
@@ -31,7 +30,7 @@ namespace SIPWR.TSP
             this.Distance = distance;
         }
 
-        private void GenerateIndividual()
+        public void GenerateIndividual()
         {
             for (int cityIndex = 0; cityIndex < TourManager.Cities.Count(); cityIndex++)
             {
@@ -93,6 +92,14 @@ namespace SIPWR.TSP
                     return 1 / this.Distance;
                 }
             }
+        }
+
+        public static Tour GetRandomTour()
+        {
+            var tour = new Tour();
+            tour.GenerateIndividual();
+
+            return tour;
         }
     }
 }

@@ -4,11 +4,11 @@ namespace SIPWR.TSP
 {
     public static class RandomHelper
     {
-        private static Random random = new Random();
+        public static readonly Random Random = new Random();
 
         public static double Get()
         {
-            return random.NextDouble() * 100;
+            return Random.NextDouble() * 100;
         }
     }
 }
