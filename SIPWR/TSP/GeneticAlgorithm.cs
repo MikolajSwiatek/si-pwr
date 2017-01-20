@@ -38,7 +38,6 @@ namespace SIPWR.TSP
             SelectionType selectionType,
             List<City> cities)
         {
-            this.distances = Distance.Calculate(TourManager.Cities);
             this.mutationProbability = 1.0 / (TourManager.Cities.Count * mutatorValue);
             this.generationCount = generationCount;
             this.populationSize = populationSize;
@@ -47,11 +46,13 @@ namespace SIPWR.TSP
             this.selection = SelectionFactory.Get(selectionType);
 
             TourManager.Cities = cities;
+            this.distances = Distance.Calculate(TourManager.Cities);
         }
 
         public void Execute()
         {
             startTime = DateTime.Now;
+            GeneratePopulations();
 
             for (var i = 0; i < generationCount; i++)
             {
@@ -101,14 +102,15 @@ namespace SIPWR.TSP
                     if (index + 1 < aux.TourCities.Count())
                     {
                         city2 = aux.TourCities[index + 1];
+                        aux.TourCities[index + 1] = city1;
                     }
                     else
                     {
                         city2 = aux.TourCities[0];
+                        aux.TourCities[0] = city1;
                     }
 
                     aux.TourCities[index] = city2;
-                    aux.TourCities[index + 1] = city1;
                 }
             }
         }

@@ -6,6 +6,10 @@ namespace SIPWR.TSP.Crossover
 {
     public class Point : ICrossover
     {
+        public Point()
+        {
+
+        }
 
         public Tour Crossover(Tour tour1, Tour tour2)
         {

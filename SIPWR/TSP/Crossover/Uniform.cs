@@ -15,11 +15,6 @@ namespace SIPWR.TSP.Crossover
             _ratePerGene = RatePerGeneDefault;
         }
 
-        public Uniform(double ratePerGene)
-        {
-            _ratePerGene = ratePerGene;
-        }
-
         public Tour Crossover(Tour tour1, Tour tour2)
         {
             var cities = new List<City>();

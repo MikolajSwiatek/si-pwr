@@ -4,7 +4,6 @@ namespace SIPWR.Hanoi
 {
     public static class HanoiFactory
     {
-
         public static Algorithm Get(
             HanoiAlgorithm algorithm,
             int t,

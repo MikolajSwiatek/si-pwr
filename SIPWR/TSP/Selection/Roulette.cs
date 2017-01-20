@@ -7,6 +7,11 @@ namespace SIPWR.TSP.Selection
 {
     public class Roulette : ISelection
     {
+        public Roulette()
+        {
+
+        }
+
         public Tour Selection(
             List<Tour> populations,
             Dictionary<string, Dictionary<string, double>> distances)
