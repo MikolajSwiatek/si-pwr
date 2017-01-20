@@ -1,0 +1,108 @@
+﻿@model SIPWR.Models.TSPViewModel
+
+<h2>TSP Solver</h2>
+
+@using (Html.BeginForm("Result", "TSP", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        <label for="sel1">Algorithms:</label>
+        @Html.DropDownListFor(
+            m => m.SelectedPosition,
+            Model.TSPAlgorithms,
+            new { @class = "form-control", @id = "sel1" })
+    </div>
+
+    <div class="form-group">
+        <label for="CoolingRate">Cooling rate:</label>
+        @Html.TextBoxFor(
+            m => m.CoolingRate,
+             new { @class = "form-control", @id = "CoolingRate" })
+    </div>
+
+    <div class="form-group">
+        <label for="Temperature">Temperature:</label>
+        @Html.TextBoxFor(
+            m => m.Temperature,
+             new { @class = "form-control", @id = "Temperature" })
+    </div>
+
+    <div class="form-group">
+        <label for="Number">Number:</label>
+        @Html.TextBoxFor(
+             m => m.Number,
+               new { @class = "form-control", @id = "Number", @type = "number" })
+    </div>
+
+    <div class="form-group">
+        <label for="sel1">Crossover Types:</label>
+        @Html.DropDownListFor(
+            m => m.SelectedCrossoverPosition,
+            Model.CrossoverTypes,
+            new { @class = "form-control", @id = "sel2" })
+    </div>
+
+    <div class="form-group">
+        <label for="sel1">Selection Types:</label>
+        @Html.DropDownListFor(
+            m => m.SelectedSelectionPosition,
+            Model.SelectionTypes,
+            new { @class = "form-control", @id = "sel3" })
+    </div>
+
+    <div class="form-group">
+        <label for="GenerationCount">Generation Count:</label>
+        @Html.TextBoxFor(
+            m => m.GenerationCount,
+              new { @class = "form-control", @id = "GenerationCount", @type = "number" })
+    </div>
+
+    <div class="form-group">
+        <label for="MutatorValue">MutatorValue:</label>
+        @Html.TextBoxFor(
+            m => m.MutatorValue,
+               new { @class = "form-control", @id = "MutatorValue", @type = "number" })
+    </div>
+
+    <div class="form-group">
+        <label for="PopulationSize">Population Size:</label>
+        @Html.TextBoxFor(
+            m => m.PopulationSize,
+               new { @class = "form-control", @id = "PopulationSize", @type = "number" })
+    </div>
+
+    <div class="form-group">
+        <label for="RandomData">Random Data:</label>
+        @Html.CheckBoxFor(
+            m => m.RandomData,
+                new { @class = "form-control", @id = "RandomData"})
+    </div>
+
+    <div class="form-group">
+        <label for="GenerateCityNumber">Generate City Number:</label>
+        @Html.TextBoxFor(
+            m => m.GenerateCityNumber,
+                new { @class = "form-control", @id = "GenerateCityNumber", @type = "number" })
+    </div>
+
+    <div class="form-group">
+        <label for="DemoData">Demo Data</label>
+        @Html.CheckBoxFor(
+            m => m.DemoData,
+                 new { @class = "form-control", @id = "DemoData" })
+    </div>
+
+    <div class="form-group">
+        <label for="Cities">Cities</label>
+        @Html.TextAreaFor(
+            m => m.Cities,
+                  new { @class = "form-control", @id = "Cities" })
+    </div>
+
+    <div class="row">
+        <button type="submit" id="btn-send-clients" class="btn btn-default">Submit</button>
+        <button type="reset" id="btn-send-clients" class="btn btn-default">Reset</button>
+    </div>
+}

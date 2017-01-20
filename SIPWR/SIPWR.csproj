@@ -115,6 +115,7 @@
     <Compile Include="Areas\Problems\Controllers\TSPController.cs" />
     <Compile Include="Areas\Problems\ProblemsAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Data\DemoTSPData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -129,6 +130,10 @@
     <Compile Include="Hanoi\Model\HanoiTowers.cs" />
     <Compile Include="Hanoi\Model\History.cs" />
     <Compile Include="Hanoi\Model\Tower.cs" />
+    <Compile Include="Models\HanoiResultViewModel.cs" />
+    <Compile Include="Models\HanoiViewModel.cs" />
+    <Compile Include="Models\TSPResultViewModel.cs" />
+    <Compile Include="Models\TSPViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TSP\Crossover\CrossoverType.cs" />
     <Compile Include="TSP\Crossover\CrossoverFactory.cs" />
@@ -140,12 +145,6 @@
     <Compile Include="TSP\IAlgorithm.cs" />
     <Compile Include="TSP\Model\City.cs" />
     <Compile Include="TSP\Model\History.cs" />
-    <Compile Include="TSP\Mutator\FlipGene.cs" />
-    <Compile Include="TSP\Mutator\IMutator.cs" />
-    <Compile Include="TSP\Mutator\MutatorFactory.cs" />
-    <Compile Include="TSP\Mutator\MutatorType.cs" />
-    <Compile Include="TSP\Mutator\RandomMutator.cs" />
-    <Compile Include="TSP\Mutator\Uniform.cs" />
     <Compile Include="TSP\RandomHelper.cs" />
     <Compile Include="TSP\Selection\SelectionType.cs" />
     <Compile Include="TSP\Selection\ISelection.cs" />
@@ -155,8 +154,10 @@
     <Compile Include="TSP\SimulatedAnnealing.cs" />
     <Compile Include="TSP\Tour.cs" />
     <Compile Include="TSP\TourManager.cs" />
+    <Compile Include="TSP\TSPAlgorithm.cs" />
     <Compile Include="TSP\TSPCreatorHelper.cs" />
     <Compile Include="TSP\Crossover\TwoPoint.cs" />
+    <Compile Include="TSP\TSPFactory.cs" />
     <Compile Include="ViewServices\EnumService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +170,11 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Problems\Views\web.config" />
+    <Content Include="Areas\Problems\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Problems\Views\Hanoi\Index.cshtml" />
+    <Content Include="Areas\Problems\Views\Hanoi\Result.cshtml" />
+    <Content Include="Areas\Problems\Views\TSP\Index.cshtml" />
+    <Content Include="Areas\Problems\Views\TSP\Result.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -200,10 +206,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Problems\Models\" />
-    <Folder Include="Areas\Problems\Views\Hanoi\" />
     <Folder Include="Areas\Problems\Views\Shared\" />
-    <Folder Include="Areas\Problems\Views\TSP\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

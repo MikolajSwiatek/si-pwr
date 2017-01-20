@@ -1,0 +1,43 @@
+﻿@model SIPWR.Models.HanoiViewModel
+
+<h2>Hanoi Solver</h2>
+
+@using (Html.BeginForm("Result", "Hanoi", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        <label for="sel1">Algorithm:</label>
+        @Html.DropDownListFor(
+            m => m.SelectedPosition,
+            Model.HanoiAlgorithms,
+            new { @class = "form-control", @id = "sel1" })
+    </div>
+
+    <div class="form-group">
+        <label for="discNumber">Disc number:</label>
+        @Html.TextBoxFor(
+            m => m.DiscNumber,
+            new { @class = "form-control", @id = "discNumber", @type = "number" })
+    </div>
+
+    <div class="form-group">
+        <label for="towerNumber">Disc Tower:</label>
+        @Html.TextBoxFor(
+            m => m.TowerNumber,
+            new { @class = "form-control", @id = "towerNumber", @type = "number" })
+    </div>
+
+    <div class="form-group">
+        <label for="selectedTower">Selected Tower:</label>
+        @Html.TextBoxFor(
+            m => m.SelectedTower,
+            new { @class = "form-control", @id = "selectedTower", @type = "number" })
+    </div>
+
+    <div class="row">
+        <button type="submit" id="btn-send-clients" class="btn btn-default">Submit</button>
+        <button type="reset" id="btn-send-clients" class="btn btn-default">Reset</button>
+    </div>
+}

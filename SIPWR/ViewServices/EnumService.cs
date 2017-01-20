@@ -1,4 +1,5 @@
 ﻿using SIPWR.Hanoi;
+using SIPWR.TSP;
 using SIPWR.TSP.Crossover;
 using SIPWR.TSP.Selection;
 using System;
@@ -21,6 +22,14 @@ namespace SIPWR.ViewServices
         public IEnumerable<SelectListItem> GetCrossoverTypes()
         {
             var enums = Enum.GetNames(typeof(CrossoverType))
+                .Select(x => new SelectListItem() { Text = x.ToString(), Value = x.ToString() });
+
+            return enums;
+        }
+
+        public IEnumerable<SelectListItem> GetTSPAlgorithmTypes()
+        {
+            var enums = Enum.GetNames(typeof(TSPAlgorithm))
                 .Select(x => new SelectListItem() { Text = x.ToString(), Value = x.ToString() });
 
             return enums;

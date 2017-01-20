@@ -1,6 +1,5 @@
 ﻿using SIPWR.TSP.Crossover;
 using SIPWR.TSP.Model;
-using SIPWR.TSP.Mutator;
 using SIPWR.TSP.Selection;
 using System;
 using System.Collections.Generic;
@@ -21,12 +20,10 @@ namespace SIPWR.TSP
 
         private ICrossover crossover;
         private ISelection selection;
-        private IMutator mutator;
 
         private DateTime startTime;
         private DateTime endTime;
 
-        private Dictionary<City, double> FitnessCity;
         private List<Tour> populations = new List<Tour>();
         private Tour best = null;
 
