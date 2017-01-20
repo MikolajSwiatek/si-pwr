@@ -1,0 +1,40 @@
+﻿@model SIPWR.Models.HanoiResultViewModel
+
+
+<h2>Result</h2>
+
+<div class="form-group">
+    Disc number: @Model.DiscNumber
+</div>
+
+<div class="form-group">
+    Tower number: @Model.TowerNumber
+</div>
+
+<div class="form-group">
+    Expected result: @Model.SelectedPosition
+</div>
+
+<div class="form-group">
+    Start time: @Model.Result.StartTime
+</div>
+
+<div class="form-group">
+    End time: @Model.Result.EndTime
+</div>
+
+<div class="form-group">
+    Counter: @Model.Result.Counter
+</div>
+
+<div class="form-group">
+    Moves: @Model.Result.Moves.Count()
+</div>
+
+<div class="row">
+    @{var rx = new System.Text.RegularExpressions.Regex(";;");}
+    @foreach (var line in rx.Split(Model.Result.GetMovesString()))
+    {
+        @line <br>
+    }
+</div>

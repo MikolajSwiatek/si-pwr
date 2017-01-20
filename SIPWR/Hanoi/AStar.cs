@@ -36,6 +36,8 @@ namespace SIPWR.Hanoi
                 if (current == endstate)
                 {
                     result = ReconstructPath(current, cameFrom);
+                    endTime = DateTime.Now;
+
                     return;
                 }
 
@@ -76,8 +78,6 @@ namespace SIPWR.Hanoi
                     }
                 }
             }
-
-            endTime = DateTime.Now;
         }
 
         private string GetLeastCost(

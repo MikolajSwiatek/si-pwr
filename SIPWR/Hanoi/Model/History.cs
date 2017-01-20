@@ -31,7 +31,7 @@ namespace SIPWR.Hanoi.Model
 
             foreach (var line in Moves)
             {
-                text += line + "\n";
+                text += line + ";;";
             }
 
             return text;
