@@ -114,13 +114,16 @@ namespace SIPWR.TSP
 
         private void SetBest(List<Tour> newGeneration)
         {
-            var fitness = 0d;
-
             foreach (var ng in newGeneration)
             {
                 ng.GetDistance(distances);
 
-                if (fitness < ng.Fitness)
+                var ngCitiesCount = TourManager.Cities
+                    .Where(c => ng.TourCities.Contains(c))
+                    .Count();
+
+                if (best == null || (best.Fitness < ng.Fitness &&
+                    ngCitiesCount == TourManager.Cities.Count()))
                 {
                     best = ng;
                 }
