@@ -47,12 +47,14 @@ namespace SIPWR.TSP
             best = new Tour(currentSolution.TourCities);
             var random = new Random();
 
+            best.GetDistance(distances);
+
             while (temp > 1)
             {
                 var newSolution = new Tour(currentSolution.TourCities);
 
-                var tourPos1 = (int)(newSolution.TourCities.Count() * random.Next(0, 1));
-                var tourPos2 = (int)(newSolution.TourCities.Count() * random.Next(0, 1));
+                var tourPos1 = random.Next(0, newSolution.TourCities.Count());
+                var tourPos2 = random.Next(0, newSolution.TourCities.Count());
 
                 var city1 = newSolution.TourCities.ElementAt(tourPos1);
                 var city2 = newSolution.TourCities.ElementAt(tourPos2);
@@ -74,6 +76,7 @@ namespace SIPWR.TSP
                 if (currentSolution.GetDistance(distances) < best.GetDistance(distances))
                 {
                     best = new Tour(currentSolution.TourCities);
+                    best.GetDistance(distances);
                 }
 
                 temp *= 1 - coolingRate;

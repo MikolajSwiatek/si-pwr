@@ -66,11 +66,6 @@ namespace SIPWR.TSP
                 var tour = Tour.GetRandomTour();
                 populations.Add(tour);
             }
-
-            if (best == null)
-            {
-                best = populations.First();
-            }
         }
 
         private void NextGeneration()
@@ -123,10 +118,12 @@ namespace SIPWR.TSP
             {
                 ng.GetDistance(distances);
 
-                if (best.Fitness < ng.Fitness &&
-                    TourManager.Cities
+                var ngCitiesCount = TourManager.Cities
                     .Where(c => ng.TourCities.Contains(c))
-                    .Count() == TourManager.Cities.Count())
+                    .Count();
+
+                if (best == null || (best.Fitness < ng.Fitness &&
+                    ngCitiesCount == TourManager.Cities.Count()))
                 {
                     best = ng;
                 }
